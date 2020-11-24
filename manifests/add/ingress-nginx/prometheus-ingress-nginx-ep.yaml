@@ -3,17 +3,17 @@ kind: Endpoints
 metadata:
   labels:
     app.kubernetes.io/component: controller
-    app.kubernetes.io/instance: myingress
+    app.kubernetes.io/instance: ingress-nginx 
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: ingress-nginx
     app.kubernetes.io/version: 0.41.2
     helm.sh/chart: ingress-nginx-3.10.1
   name: myingress-ingress-nginx-controller-metrics
-  namespace: default
+  namespace: ingress-controller
 subsets:
 - addresses:
-  - ip: 10.15.4.251
-    nodeName: uat-master02
+  - ip: 10.14.14.1
+    nodeName: node01
   ports:
   - name: metrics
     port: 10254

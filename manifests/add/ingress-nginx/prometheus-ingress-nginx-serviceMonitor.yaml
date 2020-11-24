@@ -4,11 +4,10 @@ metadata:
   labels:
     #k8s-app: ingress-nginx
     app.kubernetes.io/name: ingress-nginx
-    app.kubernetes.io/instance: myingress
+    app.kubernetes.io/instance: ingress-nginx
     app.kubernetes.io/component: controller
   name: nginx-ingress-controller-metrics
-  #namespace: ingress-nginx
-  namespace: default
+  namespace: monitoring 
 spec:
   endpoints:
   - interval: 15s
@@ -16,10 +15,9 @@ spec:
   jobLabel: k8s-app
   namespaceSelector:
     matchNames:
-    - default 
+    - ingress-controller 
   selector:
     matchLabels:
-      #app: ingress-nginx
       app.kubernetes.io/name: ingress-nginx
-      app.kubernetes.io/instance: myingress
+      app.kubernetes.io/instance: ingress-nginx
       app.kubernetes.io/component: controller
