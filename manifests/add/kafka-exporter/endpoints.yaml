@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: kafka-exporter
+  labels:
+    k8s-app: kafka-exporter
+  namespace: monitoring 
+subsets:
+- addresses:
+  - ip: 172.21.62.187
+    nodeName: kafka01
+  ports:
+  - name: metrics 
+    port: 9308
+    protocol: TCP
