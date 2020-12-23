@@ -40,7 +40,7 @@ spec:
     key: prometheus-additional.yaml
   secrets:
   - etcd-certs
-  retention: "24h"
+  retention: "30d"
   storage:
     volumeClaimTemplate:
       spec:

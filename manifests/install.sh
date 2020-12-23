@@ -63,9 +63,9 @@ kubectl create -f ./ >/dev/null 2>&1
 
 ###配置kube-controller kube-scheduler kube-etcd等监控
 echo
-cd add
+cd add/k8s-monitor
 echo "3.config kube-controller kube-scheduler etcd servicemonitor"
-sh servicemonitor.sh
+sh k8s-monitor.sh
 
 
 ###配置自动发现
