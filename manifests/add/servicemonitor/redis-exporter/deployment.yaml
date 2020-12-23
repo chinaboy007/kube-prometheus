@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: redis-exporter
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: redis-exporter
+    spec:
+      containers:
+      - name: redis-exporter
+        imagePullPolicy: Always
+        env:
+        - name: REDIS_ADDR
+          value: "<地址>"
+        - name: REDIS_PASSWORD
+          value: "<密码>"
+        - name: REDIS_EXPORTER_DEBUG
+          value: "1"
+        image: oliver006/redis_exporter
+        ports:
+        - containerPort: 9121
+          name: redis-exporter

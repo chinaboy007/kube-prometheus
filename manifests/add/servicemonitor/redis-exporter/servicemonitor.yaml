@@ -1,0 +1,21 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  # 填写一个唯一名称
+  name: redis-exporter
+  # 填写目标命名空间
+  namespace: default
+spec:
+  endpoints:
+  - interval: 30s
+    # Redis Grafana模版ID为763
+    # 填写service.yaml中prometheus exporter对应的Port的Name字段的值
+    port: redis-exporter
+    # 填写Prometheus Exporter代码中暴露的地址
+    path: /metrics
+  namespaceSelector:
+    any: true
+    # Demo的命名空间selector:
+    matchLabels:
+      # 填写service.yaml的Label字段以定位目标service.yaml
+      app: redis-exporter
