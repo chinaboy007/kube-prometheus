@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: mysqld-exporter
+  name: mysqld-exporter
+spec:
+  ports:
+  - name: mysqld-exporter
+    port: 9104
+    protocol: TCP
+    targetPort: 9104
+  type: NodePort
+  selector:
+    app: mysqld-exporter

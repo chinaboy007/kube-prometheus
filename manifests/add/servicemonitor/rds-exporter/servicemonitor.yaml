@@ -1,0 +1,24 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: mysqld-exporter
+    release: p
+  # 填写一个唯一名称
+  name: mysqld-exporter
+  # 填写目标命名空间
+  namespace: default
+spec:
+  endpoints:
+  - interval: 30s
+    # Mysqld Grafana 模版 ID 为 7362
+    # 填写 service.yaml 中 Prometheus Exporter 对应的 Port 的 Name 字段的值
+    port: mysqld-exporter
+    #填写 Prometheus Exporter 代码中暴露的地址
+    path: /metrics
+  namespaceSelector:
+    any: true
+    # Nginx Demo 的命名空间
+  selector:
+    matchLabels:
+      app: mysqld-exporter
