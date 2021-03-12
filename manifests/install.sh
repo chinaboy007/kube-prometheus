@@ -66,6 +66,7 @@ echo
 cd add/k8s-monitor
 echo "3.config kube-controller kube-scheduler etcd servicemonitor"
 sh k8s-monitor.sh
+cd ..
 
 
 ###配置自动发现
